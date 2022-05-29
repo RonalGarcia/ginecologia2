@@ -1,0 +1,59 @@
+
+.main{
+    display: flex;
+}
+.ver_todo{
+    width: 5%;
+    height: 20%;
+    background-color: white;
+  color: blue;
+  border: 2px solid #003cff;
+}
+.tabla{
+    width: 75%;
+    height: 100%;
+    display:grid;
+    background-color: lightgray;
+}
+.table-responsive{
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    display: flex;
+}
+.container1{
+    width: 35%;
+    height: 90%;
+    display:inline-flexbox;
+    float: right;
+    background-color: whitesmoke;
+}
+.container_citas{
+    width: 100%;
+    height: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.citas_hoy{
+    background-color: lightgray;
+    width: 95%;
+    height: 100%;
+}
+.citas_faltantes{
+    width: 95%;
+    height: 100%;
+    background-color: rgba(211, 211, 211, 0.596);
+}
+.img1{
+    margin: 0% 0 0 90%;
+    width: 10%;
+    height: 10%;
+
+}
+.img2{
+    margin: 0% 0 0 90%;
+    width: 10%;
+    height: 5%;
+
+}

@@ -36,6 +36,10 @@ class PromocionesController extends Controller
     public function store(Request $request)
     {
         //
+        // $request = Promociones::all();
+        $data = $request->all();
+        Promociones::create($data);
+        return $data;
     }
 
     /**

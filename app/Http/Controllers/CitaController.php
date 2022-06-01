@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Servicio;
+use App\Models\Cita;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class CitaController extends Controller
 {
@@ -13,7 +17,20 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        $pacientes = Paciente::all(); //consulta a DB SQL
+        $servicios = Servicio::all(); //consulta a DB SQL
+        return view(
+            'citas.create',
+            [
+                'servicios' => $servicios,
+                'pacientes' => $pacientes
+            ]
+        );
+    }
+    public function agenda()
+    {
+        $agenda = Cita::all();
+        return view('citas.agenda', ['agenda' => $agenda]);
     }
     public function crearCita()
     {
@@ -24,10 +41,6 @@ class CitaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,6 +51,20 @@ class CitaController extends Controller
     public function store(Request $request)
     {
         //
+        /*  $data =  [
+            'id_paciente' => $request->get('id_paciente'),
+
+            'id_servicio' => $request->get('id_servicio')
+        ]; */
+        $data = new Cita([
+            'id_paciente' => $request->get('id_paciente'),
+            'id_servicio' => $request->get('id_servicio'),
+
+        ]);
+        //$data = $request->all();
+        //Cita::create($data);
+        $data->save();
+        return $data;
     }
 
     /**

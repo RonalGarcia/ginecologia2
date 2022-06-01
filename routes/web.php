@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\pacientesController;
 use App\Http\Controllers\CitaController;
+use App\Http\Controllers\PacienteController;
+use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\PromocionController;
+use App\Http\Controllers\PromocionesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +37,14 @@ Route::get('/seguimiento', function () {
     return view('seguimiento');
 });
 
-Route::get('/citas', function () {
-    return view('citas');
-});
 
-Route::post('crear.cita', [CitaController::class, 'crearCita'])->name('crear.cita');
+Route::get('citas', [CitaController::class, 'index'])->name('citas');
+Route::get('promociones', [PromocionController::class, 'index'])->name('promociones');
+Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
+Route::get('agenda', [CitaController::class, 'agenda'])->name('agenda');
+Route::post('crearPaciente', [PacienteController::class, 'store'])->name('crearPaciente');
+Route::post('crearCita', [CitaController::class, 'store'])->name('crearCita');
 Route::get('cita-show', [CitaController::class, 'show'])->name('cita-show');
+
+//API
+Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('getServicios');

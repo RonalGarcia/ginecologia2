@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model
 {
-    use HasFactory;
+    //use HasFactory;
     protected $fillable = [
         'id',
         'id_paciente',

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promocion;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 
-class PacienteController extends Controller
+class PromocionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +17,8 @@ class PacienteController extends Controller
     public function index()
     {
         //
+        $services = Servicio::all();
+        return view('promociones.promociones', ['services' => $services]);
     }
 
     /**
@@ -22,10 +26,10 @@ class PacienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(array $data)
+    public function create()
     {
         //
-        return Paciente::create($data);
+
     }
 
     /**
@@ -36,18 +40,18 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        Paciente::create($data);
-        return $data;
+        $request = Promocion::all();
+        //Promocion::create($request);
+        return $request;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Promocion $promocion)
     {
         //
     }
@@ -55,10 +59,10 @@ class PacienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Promocion $promocion)
     {
         //
     }
@@ -67,10 +71,10 @@ class PacienteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Promocion $promocion)
     {
         //
     }
@@ -78,10 +82,10 @@ class PacienteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Promocion  $promocion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Promocion $promocion)
     {
         //
     }

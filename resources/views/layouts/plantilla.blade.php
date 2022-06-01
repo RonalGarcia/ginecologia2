@@ -82,6 +82,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href=<?= url('/citas') ?>>
+                                <span data-feather="users"></span>
+                                Agendar cita
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href=<?= url('/seguimiento') ?>>
                                 <span data-feather="bar-chart-2"></span>
                                 Seguimiento

@@ -34,5 +34,9 @@ Route::get('/seguimiento', function () {
     return view('seguimiento');
 });
 
+Route::get('/citas', function () {
+    return view('citas');
+});
+
 Route::post('crear.cita', [CitaController::class, 'crearCita'])->name('crear.cita');
 Route::get('cita-show', [CitaController::class, 'show'])->name('cita-show');

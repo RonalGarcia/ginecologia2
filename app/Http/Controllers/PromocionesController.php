@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Promociones;
 use Illuminate\Http\Request;
+use App\Models\Servicio;
+use Illuminate\Support\Str;
 
 class PromocionesController extends Controller
 {
@@ -15,6 +17,17 @@ class PromocionesController extends Controller
     public function index()
     {
         //
+        $services = Servicio::all();
+        return view('promociones.promociones', ['services' => $services]);
+    }
+
+    public function promoControl($id)
+    {
+        //
+        // $request = 2;
+        $promos = Servicio::with('promocion')->where('id', $id)->get();
+        //$services = Servicio::all();
+        return view('promociones.promoControl', ['promos' => $promos]);
     }
 
     /**
@@ -37,9 +50,21 @@ class PromocionesController extends Controller
     {
         //
         // $request = Promociones::all();
-        $data = $request->all();
-        Promociones::create($data);
-        return $data;
+        $promo = new Promociones;
+        $promo->imagen = $request->imagen;
+        $promo->servicio = $request->servicio;
+        $promo->asunto = $request->asunto;
+        $promo->descripcion = $request->descripcion;
+        $imagen = $request->file('imagen')->store('img/post/', 'public');;
+        /*      if ($request->hasFile("imagen")) {
+            $imagen = $request->file("imagen");
+            $nombreimagen = Str::slug('test') . "." . $imagen->guessExtension();
+            $ruta = public_path("img/post/");
+
+            $imagen->move($ruta, $nombreimagen);
+            $request->imagen = $nombreimagen;
+        } */
+        return $imagen;
     }
 
     /**

@@ -99,11 +99,17 @@
                                 Seguimiento
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=<?= url('/promociones') ?>>
-                                <span data-feather="layers"></span>
+                        <li class="dropdown nav-item">
+                            <a class="nav-link dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <span data-feather="users"></span>
                                 Promociones
                             </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="<?= url('/promociones') ?>">Crear Promoción</a></li>
+                                <li><a class="dropdown-item" href="promoControl/1">Ver Promociones</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
 

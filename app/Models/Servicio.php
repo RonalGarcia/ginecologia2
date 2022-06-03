@@ -13,4 +13,13 @@ class Servicio extends Model
         'tipo_servicio',
 
     ];
+    public function cita()
+    {
+        return $this->hasOne(Cita::class, 'id');
+    }
+
+    public function promocion()
+    {
+        return $this->hasOne(Promociones::class, 'servicio');
+    }
 }

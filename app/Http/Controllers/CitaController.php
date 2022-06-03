@@ -29,8 +29,9 @@ class CitaController extends Controller
     }
     public function agenda()
     {
-        $agenda = Cita::all();
-        return view('citas.agenda', ['agenda' => $agenda]);
+        $servicios = Cita::with('servicio', 'paciente')->get();
+
+        return view('citas.agenda', ['agenda' => $servicios]);
     }
     public function crearCita()
     {
@@ -59,6 +60,11 @@ class CitaController extends Controller
         $data = new Cita([
             'id_paciente' => $request->get('id_paciente'),
             'id_servicio' => $request->get('id_servicio'),
+            'asunto' => $request->get('asunto'),
+            'descripcion' => $request->get('descripcion'),
+            'fecha' => $request->get('fecha'),
+            'hora' => $request->get('hora'),
+
 
         ]);
         //$data = $request->all();

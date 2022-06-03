@@ -17,4 +17,9 @@ class Promociones extends Model
         'email',
         'imagen'
     ];
+
+    public function servicio()
+    {
+        return $this->belongsTo(Servicio::class, 'servicio');
+    }
 }

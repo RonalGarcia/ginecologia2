@@ -38,13 +38,20 @@ Route::get('/seguimiento', function () {
 });
 
 
-Route::get('citas', [CitaController::class, 'index'])->name('citas');
-Route::get('promociones', [PromocionController::class, 'index'])->name('promociones');
-Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
-Route::get('agenda', [CitaController::class, 'agenda'])->name('agenda');
+//pacientes
 Route::post('crearPaciente', [PacienteController::class, 'store'])->name('crearPaciente');
+//citas
+Route::get('citas', [CitaController::class, 'index'])->name('citas');
+Route::get('agenda', [CitaController::class, 'agenda'])->name('agenda');
 Route::post('crearCita', [CitaController::class, 'store'])->name('crearCita');
 Route::get('cita-show', [CitaController::class, 'show'])->name('cita-show');
-
 //API
 Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('getServicios');
+//promociones
+Route::get('promociones', [PromocionesController::class, 'index'])->name('promociones');
+Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
+Route::get('promoControl/{id}', [PromocionesController::class, 'promoControl'])->name('promoControl');
+Route::get('promoGinecologia', [PromocionesController::class, 'promoGinecologia'])->name('promoGinecologia');
+Route::get('promoInfEst', [PromocionesController::class, 'promoInfEst'])->name('promoInfEst');
+Route::get('promoObstetricia', [PromocionesController::class, 'promoObstetricia'])->name('promoObstetricia');
+Route::get('promoPsiSex', [PromocionesController::class, 'promoPsiSex'])->name('promoPsiSex');

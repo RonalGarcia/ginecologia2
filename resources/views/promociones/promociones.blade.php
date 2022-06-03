@@ -6,7 +6,7 @@
         <h1>Crear Promoción</h1><br>
         {{ $services }}
 
-        <form role="form" action="{{ route('crearPromo') }}" method=" POST">
+        <form role="form" action="{{ route('crearPromo') }}" method=" POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Asunto</label><br>
@@ -38,7 +38,7 @@
             <div class="row">
                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Imagen</label><br>
                 <div class="col-sm-10">
-                    <input type="text" name="imagen" class="form-control form-control-lg" id="colFormLabelLg"
+                    <input type="file" name="imagen" class="form-control form-control-lg" id="colFormLabelLg"
                         placeholder="Inserte el número aquí">
                 </div>
             </div>

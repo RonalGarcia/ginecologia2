@@ -48,14 +48,33 @@ class PromocionesController extends Controller
      */
     public function store(Request $request)
     {
+
+        $post = new promociones();
+
+        $post->servicio = $request->servicio;
+        $post->asunto = $request->asunto;
+        $post->descripcion = $request->descripcion;
+
+        if ($request->hasFile("imagen")) {
+            $imagen = $request->file("imagen");
+            $nombreimagen = Str::slug($request->nombre) . "." . $imagen->guessExtension();
+            $ruta = public_path("img/post");
+            // $imagen->move($ruta, $nombreimagen);
+            copy($imagen->getRealPath(), $ruta . $nombreimagen);
+            $post->imagen = $nombreimagen;
+        }
+        $post->save();
+
         //
         // $request = Promociones::all();
-        $promo = new Promociones;
-        $promo->imagen = $request->imagen;
-        $promo->servicio = $request->servicio;
-        $promo->asunto = $request->asunto;
-        $promo->descripcion = $request->descripcion;
-        $imagen = $request->file('imagen')->store('img/post/', 'public');;
+
+        //     $promo = new Promociones;
+        //     $promo->imagen = $request->imagen;
+        //     $promo->servicio = $request->servicio;
+        //     $promo->asunto = $request->asunto;
+        //     $promo->descripcion = $request->descripcion;
+        //    $imagen= $request->file('imagen')->store('img/post/', 'public');
+
         /*      if ($request->hasFile("imagen")) {
             $imagen = $request->file("imagen");
             $nombreimagen = Str::slug('test') . "." . $imagen->guessExtension();
@@ -64,7 +83,7 @@ class PromocionesController extends Controller
             $imagen->move($ruta, $nombreimagen);
             $request->imagen = $nombreimagen;
         } */
-        return $imagen;
+        // return $imagen;
     }
 
     /**

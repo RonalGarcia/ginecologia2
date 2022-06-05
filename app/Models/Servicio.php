@@ -22,4 +22,8 @@ class Servicio extends Model
     {
         return $this->hasOne(Promociones::class, 'servicio');
     }
+    public function servicio()
+    {
+        return $this->hasMany(Servicio::class, 'servicio');
+    }
 }

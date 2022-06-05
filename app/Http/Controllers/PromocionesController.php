@@ -9,7 +9,7 @@ use App\Models\Servicio;
 use Mail;
 use App\Mail\Promocion;
 use App\Mail\Informacion;
- 
+
 class PromocionesController extends Controller
 {
     /**
@@ -57,29 +57,30 @@ class PromocionesController extends Controller
         $post->servicio = $request->servicio;
         $post->asunto = $request->asunto;
         $post->descripcion = $request->descripcion;
- /*        $email= "sabbathkvlt@gmail.com";   
+        $services = Servicio::all();
+        $post->save();
+        return view('promociones.promociones', ['services' => $services]);
+        /*        $email= "sabbathkvlt@gmail.com";   
             Mail::to($email)->send(new Promocion());        
         return $email; */
     }
     public function sendmail()
     {
         //$post=$request->all();
-        $post = new Promociones(); 
-        $promociones = Servicio::with('promocion')->where('id', 1)->get();;
+        //$post = new Promociones();
+        $promociones = Servicio::with('promocion')->where('id', 3)->get();
         $pacientes = Paciente::all();
-        foreach ($pacientes as $key) {
-            # code...
-           // $correo= json_encode($key['email']);
-            Mail::to($key['email'])->send(new Promocion());  
-            //echo $promociones;
-           //echo $correo;
+        # code...
+        //correo =  $pacientes['email'];
+        // Mail::to('ronalgarciacarrillo@gmail.com')->send(new Promocion($promociones));
+        echo $promociones;
+    }
 
-        }
-        
-     }
-       // $pacientes_email= $pacientes['email'];
-       
-/*         $post->servicio = $request->servicio;
+    // echo $pacientes;
+    //Mail::to($key['email'])->send(new Promocion($promociones));
+    // $pacientes_email= $pacientes['email'];
+
+    /*         $post->servicio = $request->servicio;
         $post->asunto = $request->asunto;
         $post->descripcion = $request->descripcion;
         $email= "sabbathkvlt@gmail.com";   

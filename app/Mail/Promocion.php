@@ -17,9 +17,10 @@ class Promocion extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Promociones $promociones)
     {
         //
+        $this->promociones = $promociones;
     }
 
     /**
@@ -28,7 +29,10 @@ class Promocion extends Mailable
      * @return $this
      */
     public function build()
-    {return $this->from('carlosgomezcarrillo827@gmail.com','Example')
-        ->view('email.email');
+    {
+        return $this->from('carlosgomezcarrillo827@gmail.com', 'Example')->view('email.email')->with([
+            'asunto' => $this->promociones->asunto,
+            'descripcion' => $this->promociones->descripcion,
+        ]);;
     }
 }

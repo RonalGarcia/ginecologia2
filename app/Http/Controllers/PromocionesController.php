@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promociones;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 use App\Models\Servicio;
-use Illuminate\Support\Str;
-
+use Mail;
+use App\Mail\Promocion;
+use App\Mail\Informacion;
+ 
 class PromocionesController extends Controller
 {
     /**
@@ -48,43 +51,40 @@ class PromocionesController extends Controller
      */
     public function store(Request $request)
     {
-
-        $post = new promociones();
+        //$post=$request->all();
+        $post = new Promociones();
 
         $post->servicio = $request->servicio;
         $post->asunto = $request->asunto;
         $post->descripcion = $request->descripcion;
-
-        if ($request->hasFile("imagen")) {
-            $imagen = $request->file("imagen");
-            $nombreimagen = Str::slug($request->nombre) . "." . $imagen->guessExtension();
-            $ruta = public_path("img/post");
-            // $imagen->move($ruta, $nombreimagen);
-            copy($imagen->getRealPath(), $ruta . $nombreimagen);
-            $post->imagen = $nombreimagen;
-        }
-        $post->save();
-
-        //
-        // $request = Promociones::all();
-
-        //     $promo = new Promociones;
-        //     $promo->imagen = $request->imagen;
-        //     $promo->servicio = $request->servicio;
-        //     $promo->asunto = $request->asunto;
-        //     $promo->descripcion = $request->descripcion;
-        //    $imagen= $request->file('imagen')->store('img/post/', 'public');
-
-        /*      if ($request->hasFile("imagen")) {
-            $imagen = $request->file("imagen");
-            $nombreimagen = Str::slug('test') . "." . $imagen->guessExtension();
-            $ruta = public_path("img/post/");
-
-            $imagen->move($ruta, $nombreimagen);
-            $request->imagen = $nombreimagen;
-        } */
-        // return $imagen;
+ /*        $email= "sabbathkvlt@gmail.com";   
+            Mail::to($email)->send(new Promocion());        
+        return $email; */
     }
+    public function sendmail()
+    {
+        //$post=$request->all();
+        $post = new Promociones(); 
+        $promociones = Servicio::with('promocion')->where('id', 1)->get();;
+        $pacientes = Paciente::all();
+        foreach ($pacientes as $key) {
+            # code...
+           // $correo= json_encode($key['email']);
+            Mail::to($key['email'])->send(new Promocion());  
+            //echo $promociones;
+           //echo $correo;
+
+        }
+        
+     }
+       // $pacientes_email= $pacientes['email'];
+       
+/*         $post->servicio = $request->servicio;
+        $post->asunto = $request->asunto;
+        $post->descripcion = $request->descripcion;
+        $email= "sabbathkvlt@gmail.com";   
+            Mail::to($email)->send(new Promocion());        
+        return $email; */
 
     /**
      * Display the specified resource.

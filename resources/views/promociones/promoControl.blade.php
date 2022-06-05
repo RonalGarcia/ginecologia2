@@ -27,6 +27,7 @@
                         <p class="card-text">{{ $item->descripcion }}</p>
                         {{-- <p class="card-text">{{ $item['pormocion']->imagen }}</p> --}}
                         <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a href="{{route('sendmail')}}" class="btn btn-primary">Enviar</a>
                     </div>
                 </div>
             @endforeach

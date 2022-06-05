@@ -51,6 +51,7 @@ Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('ge
 Route::get('promociones', [PromocionesController::class, 'index'])->name('promociones');
 Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
 Route::get('promoControl/{id}', [PromocionesController::class, 'promoControl'])->name('promoControl');
+Route::get('sendmail', [PromocionesController::class, 'sendmail'])->name('sendmail');
 Route::get('promoGinecologia', [PromocionesController::class, 'promoGinecologia'])->name('promoGinecologia');
 Route::get('promoInfEst', [PromocionesController::class, 'promoInfEst'])->name('promoInfEst');
 Route::get('promoObstetricia', [PromocionesController::class, 'promoObstetricia'])->name('promoObstetricia');

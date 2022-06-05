@@ -69,11 +69,18 @@ class PromocionesController extends Controller
         //$post=$request->all();
         //$post = new Promociones();
         $promociones = Servicio::with('promocion')->where('id', 3)->get();
-        $pacientes = Paciente::all();
+        $mailData[] = [
+            'asunto' => $promociones[0]->promocion->asunto,
+            'descripcion' => $promociones[0]->promocion->descripcion,
+            
+        ];
+        //return $mailData;
+        //$mailData = json_encode($data);
+        //$pacientes = Paciente::all();
         # code...
         //correo =  $pacientes['email'];
-        // Mail::to('ronalgarciacarrillo@gmail.com')->send(new Promocion($promociones));
-        echo $promociones;
+       Mail::to('kevindavila.developer@gmail.com')->send(new Promocion($mailData));
+        
     }
 
     // echo $pacientes;

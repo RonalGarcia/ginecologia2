@@ -6,7 +6,6 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Models\Promociones;
 
 class Promocion extends Mailable
 {
@@ -17,10 +16,11 @@ class Promocion extends Mailable
      *
      * @return void
      */
-    public function __construct(Promociones $promociones)
+    public $mailData;
+    public function __construct($mailData)
     {
         //
-        $this->promociones = $promociones;
+        $this->$mailData = $mailData;
     }
 
     /**
@@ -30,9 +30,6 @@ class Promocion extends Mailable
      */
     public function build()
     {
-        return $this->from('carlosgomezcarrillo827@gmail.com', 'Example')->view('email.email')->with([
-            'asunto' => $this->promociones->asunto,
-            'descripcion' => $this->promociones->descripcion,
-        ]);;
+        return $this->from('carlosgomezcarrillo827@gmail.com', 'Example')->view('email.email');
     }
 }

@@ -23,7 +23,7 @@
                 <div class="col-sm-10">
                     <select class="form-control form-control-lg" name="id_servicio">
                         @foreach ($servicios as $servicio)
-                            <option value="{{ $servicio['id'] }}">{{ $servicio->id }}</option>
+                            <option value="{{ $servicio['id'] }}">{{ $servicio->tipo_servicio }}</option>
                         @endforeach
                     </select>
                 </div>

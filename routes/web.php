@@ -6,6 +6,7 @@ use App\Http\Controllers\PacienteController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\PromocionController;
 use App\Http\Controllers\PromocionesController;
+use App\Http\Controllers\SeguimientoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,9 @@ Route::get('/registro', function () {
     return view('registro');
 });
 
-Route::get('/servicios', function () {
-    return view('servicios');
-});
+// Route::get('/servicios', function () {
+//     return view('servicios');
+// });
 
 Route::get('/seguimiento', function () {
     return view('seguimiento');
@@ -51,8 +52,11 @@ Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('ge
 Route::get('promociones', [PromocionesController::class, 'index'])->name('promociones');
 Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
 Route::get('promoControl/{id}', [PromocionesController::class, 'promoControl'])->name('promoControl');
-Route::get('sendmail', [PromocionesController::class, 'sendmail'])->name('sendmail');
+Route::get('sendmail/{id}', [PromocionesController::class, 'sendmail'])->name('sendmail');
 Route::get('promoGinecologia', [PromocionesController::class, 'promoGinecologia'])->name('promoGinecologia');
 Route::get('promoInfEst', [PromocionesController::class, 'promoInfEst'])->name('promoInfEst');
 Route::get('promoObstetricia', [PromocionesController::class, 'promoObstetricia'])->name('promoObstetricia');
 Route::get('promoPsiSex', [PromocionesController::class, 'promoPsiSex'])->name('promoPsiSex');
+Route::delete('promociones/{promociones}', [PromocionesController::class, 'destroy'])->name('promociones.destroy');
+//seguimiento
+Route::post('crearSeguimiento', [SeguimientoController::class, 'store'])->name('crearSeguimiento');

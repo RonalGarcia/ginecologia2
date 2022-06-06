@@ -36,7 +36,7 @@
             </div>
             <br>
             <div class="row">
-                <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Imagen</label><br>
+                <label for="imagen" class="col-sm-2 col-form-label col-form-label-lg">Imagen</label><br>
                 <div class="col-sm-10">
                     <input type="file" name="imagen" class="form-control form-control-lg" id="imagen"
                         placeholder="Inserte el número aquí">

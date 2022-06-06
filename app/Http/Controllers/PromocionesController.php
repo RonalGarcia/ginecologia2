@@ -29,8 +29,10 @@ class PromocionesController extends Controller
         //
         // $request = 2;
         $promos = Servicio::with('promocion')->where('id', $id)->get();
-        //$services = Servicio::all();
+        //return $promos;
         return view('promociones.promoControl', ['promos' => $promos]);
+        //$services = Servicio::all();
+        //return view('promociones.promoControl', ['promos' => $promos]);
     }
 
     /**
@@ -51,48 +53,41 @@ class PromocionesController extends Controller
      */
     public function store(Request $request)
     {
-        //$post=$request->all();
+
+        // $post = $request->all();
         $post = new Promociones();
 
         $post->servicio = $request->servicio;
         $post->asunto = $request->asunto;
         $post->descripcion = $request->descripcion;
+        $post->imagen = $request->imagen;
         $services = Servicio::all();
         $post->save();
         return view('promociones.promociones', ['services' => $services]);
-        /*        $email= "sabbathkvlt@gmail.com";   
-            Mail::to($email)->send(new Promocion());        
-        return $email; */
     }
-    public function sendmail()
+    public function sendmail($id)
     {
-        //$post=$request->all();
-        //$post = new Promociones();
-        $promociones = Servicio::with('promocion')->where('id', 3)->get();
-        $mailData[] = [
-            'asunto' => $promociones[0]->promocion->asunto,
-            'descripcion' => $promociones[0]->promocion->descripcion,
-            
-        ];
-        //return $mailData;
-        //$mailData = json_encode($data);
-        //$pacientes = Paciente::all();
-        # code...
-        //correo =  $pacientes['email'];
-       Mail::to('kevindavila.developer@gmail.com')->send(new Promocion($mailData));
-        
+        //$promociones = Servicio::with('promocionEnviar')->where('id', $id)->get();
+        $promociones = Promociones::find($id);
+        //return $promociones;
+        Mail::send(
+            'email.email',
+            [
+                'asunto' => $promociones->asunto,
+                'descripcion' => $promociones->descripcion,
+            ],
+            function ($message) {
+                $pacientes = Paciente::all();
+                foreach ($pacientes as $key) {
+                    # code...
+                    $correos = $key['email'];
+                    $message->to($correos)
+                        ->subject('Nuevas Promociones');
+                }
+            }
+        );
+        return redirect()->route('promociones');
     }
-
-    // echo $pacientes;
-    //Mail::to($key['email'])->send(new Promocion($promociones));
-    // $pacientes_email= $pacientes['email'];
-
-    /*         $post->servicio = $request->servicio;
-        $post->asunto = $request->asunto;
-        $post->descripcion = $request->descripcion;
-        $email= "sabbathkvlt@gmail.com";   
-            Mail::to($email)->send(new Promocion());        
-        return $email; */
 
     /**
      * Display the specified resource.
@@ -137,5 +132,10 @@ class PromocionesController extends Controller
     public function destroy(Promociones $promociones)
     {
         //
+        if ($promociones->delete()) {
+            return redirect()->route('promociones');
+        }
+
+        // return $promociones;
     }
 }

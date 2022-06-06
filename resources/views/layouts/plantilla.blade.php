@@ -69,12 +69,7 @@
                                 Orders
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href=<?= url('/servicios') ?>>
-                                <span data-feather="shopping-cart"></span>
-                                servicios
-                            </a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href=<?= url('/registro') ?>>
                                 <span data-feather="users"></span>

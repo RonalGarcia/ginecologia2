@@ -10,18 +10,21 @@
             <form action="{{ route('crearSeguimiento') }}" method="POST">
                 @csrf
                 <div class="row">
-                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Nombre</label><br>
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Paciente</label><br>
                     <div class="col-sm-10">
-                        <input type="text" name="nombre" class="form-control form-control-lg" id="colFormLabelLg"
-                            placeholder="Inserte el nombre aquí">
+                        <select class="form-control form-control-lg" name="id_paciente">
+                            @foreach ($pacientes as $cliente)
+                                <option value="{{ $cliente['id'] }}">{{ $cliente->nombre }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Edad</label><br>
                     <div class="col-sm-10">
-                        <input type="text" name="edad" class="form-control form-control-lg" id="colFormLabelLg"
-                            placeholder="Inserte la edad aquí">
+                        <input type="text" name="edad" value="{{ $seguimiento[0]['edad'] }}"
+                            class="form-control form-control-lg" id="colFormLabelLg" placeholder="Inserte la edad aquí">
                     </div>
                 </div>
                 <br>
@@ -342,572 +345,138 @@
                     </div>
                 </div>
                 <br>
-                {{-- <div class="form-group row">
+                <div class="form-group row">
                     <div class="col-sm-10">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                </div> --}}
-                {{-- </form> --}}
+                </div>
+            </form>
         </div>
     </div>
     <br>
     <br>
 
+
     <div class="row">
-        {{-- <form action="" method="POST">
-            @csrf --}}
-        <table class="table table-bordered border-primary">
-            <thead>
-                <tr>
-                    <th scope="col">Consulta num.</th>
-                    <th scope="col">1</th>
-                    <th scope="col">2</th>
-                    <th scope="col">3</th>
-                    <th scope="col">4</th>
-                    <th scope="col">5</th>
-                    <th scope="col">6</th>
-                    <th scope="col">7</th>
-                    <th scope="col">8</th>
-                    <th scope="col">9</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Fecha de consulta</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fecha9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Semana de Amenorrea</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="amenorrea9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Náusea - Vómito</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="vomito9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Cefalea</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="cefalea9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Edema</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="edema9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Movimientos Fetales</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetales9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Peso Corporal</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="corporal9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Tensíon Arterial</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="tension9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Altura Uterina</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="altura9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Lat. Card. Fetal</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="fetal9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">Situación / Presentación</th>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion1" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion2" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion3" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion4" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion5" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion6" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion7" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion8" class="form-control">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="col-sm-12">
-                            <input type="text" name="situacion9" class="form-control">
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <br>
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </div>
+
+        <div class="col">
+
+            <form action="{{ route('crearConsulta') }}" method="POST">
+                @csrf
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Paciente</label><br>
+                    <div class="col-sm-10">
+                        <select class="form-control form-control-lg" name="id_paciente">
+                            @foreach ($pacientes as $cliente)
+                                <option value="{{ $cliente['id'] }}">{{ $cliente->nombre }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Fecha de
+                        consulta</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="fecha" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el nombre aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Semana de
+                        Amenorrea</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="amenorrea" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el peso aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Náusea -
+                        Vómito</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="nauseas" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte la talla aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Cefalea</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="cefalea" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte la gesta aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Edema</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="edena" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte la paridad aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Movimientos
+                        Fetales</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="movimientosfetales" class="form-control form-control-lg"
+                            id="colFormLabelLg" placeholder="Inserte el número de abortos aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Peso Corporal</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="pesocorporal" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el número de cesarias aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Tensíon
+                        Arterial</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="tensionarterial" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el FUR aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Altura
+                        Uterina</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="alturauterina" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el FPP aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Lat. Card.
+                        Fetal</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="latfetal" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte SI o NO aqui">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Situación /
+                        Presentación</label><br>
+                    <div class="col-sm-10">
+                        <input type="text" name="situacion" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte el número de cigarros aquí">
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        </form>
     </div>
 @endsection

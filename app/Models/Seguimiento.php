@@ -9,6 +9,7 @@ class Seguimiento extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'id_paciente',
         'nombre',
         'edad',
         'nombreesposo',

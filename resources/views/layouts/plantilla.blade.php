@@ -32,7 +32,6 @@
                 font-size: 3.5rem;
             }
         }
-
     </style>
 
 
@@ -92,6 +91,18 @@
                             <a class="nav-link" href=<?= url('/seguimiento') ?>>
                                 <span data-feather="bar-chart-2"></span>
                                 Seguimiento
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a class="nav-link" href=<?= url('/consulta') ?>>
+                                <span data-feather="bar-chart-2"></span>
+                                Consulta seguimiento
+                            </a>
+                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ route('verconsultas') }}>
+                                <span data-feather="bar-chart-2"></span>
+                                Ver Consultas
                             </a>
                         </li>
                         <li class="dropdown nav-item">

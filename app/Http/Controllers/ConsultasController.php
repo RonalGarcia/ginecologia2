@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Seguimiento;
-use App\Models\Paciente;
+use App\Models\Consultas;
 use Illuminate\Http\Request;
 
-class SeguimientoController extends Controller
+class ConsultasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +15,16 @@ class SeguimientoController extends Controller
     public function index()
     {
         //
-        $pacientes = Paciente::all();
-        $seguimiento = Seguimiento::all();
+        // $consultas = Consultas::all();
+        // $seguimiento = Seguimiento::all();
+        $consultas = Consultas::with('paciente')->get();
+        return view('verconsultas', [
+            'consultas' => $consultas,
 
-        return view('seguimiento', [
-            'pacientes' => $pacientes,
-            'seguimiento' => $seguimiento,
         ]);
+        //return $consultas;
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,7 +34,7 @@ class SeguimientoController extends Controller
     public function create(array $data)
     {
         //
-        return Seguimiento::create($data);
+        return Consultas::create($data);
     }
 
     /**
@@ -45,20 +46,21 @@ class SeguimientoController extends Controller
     public function store(Request $request)
     {
         //
-
-
+        //$consulta = new Consultas;
+        //$consulta = $request->id_paciente;
         $data = $request->all();
-        Seguimiento::create($data);
+
+        Consultas::create($data);
         return $data;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Seguimiento  $seguimiento
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function show(Seguimiento $seguimiento)
+    public function show(Consultas $consultas)
     {
         //
     }
@@ -66,10 +68,10 @@ class SeguimientoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Seguimiento  $seguimiento
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seguimiento $seguimiento)
+    public function edit(Consultas $consultas)
     {
         //
     }
@@ -78,10 +80,10 @@ class SeguimientoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Seguimiento  $seguimiento
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seguimiento $seguimiento)
+    public function update(Request $request, Consultas $consultas)
     {
         //
     }
@@ -89,12 +91,11 @@ class SeguimientoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Seguimiento  $seguimiento
+     * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Seguimiento $seguimiento)
+    public function destroy(Consultas $consultas)
     {
         //
-
     }
 }

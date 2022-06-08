@@ -1,10 +1,9 @@
 @extends('layouts.plantilla')
 
 @section('content')
+    <h1>Registro paciente</h1>
+    <br>
     <div class="row">
-        <h1>Registro paciente</h1><br>
-
-
         <form role="form" action="{{ route('crearPaciente') }}" method="POST">
             @csrf
             <div class="row">

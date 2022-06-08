@@ -1,12 +1,11 @@
 @extends('layouts.plantilla')
 
 @section('content')
-    //carrusel
     <div class="row">
-        <h1>Crear Promoción</h1><br>
-        {{ $services }}
-
+        <h1>Crear Promoción</h1>
+        {{-- {{ $services }} --}}
         <form role="form" action="{{ route('crearPromo') }}" method=" POST" enctype="multipart/form-data">
+            <br />
             @csrf
             <div class="row">
                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Asunto</label><br>
@@ -35,13 +34,13 @@
                 </div>
             </div>
             <br>
-            <div class="row">
+            {{-- <div class="row">
                 <label for="imagen" class="col-sm-2 col-form-label col-form-label-lg">Imagen</label><br>
                 <div class="col-sm-10">
                     <input type="file" name="imagen" class="form-control form-control-lg" id="imagen"
                         placeholder="Inserte el número aquí">
                 </div>
-            </div>
+            </div> --}}
             <br>
             <div class="form-group row">
                 <div class="col-sm-10">

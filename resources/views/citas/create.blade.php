@@ -3,9 +3,9 @@
 @section('content')
     <div class="row">
         <h1>Generar cita</h1>
-        <br>
-        <br>
+
         <form action="{{ route('crearCita') }}" method="POST">
+            <br>
             @csrf
             <div class="row">
                 <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Nombre</label><br>

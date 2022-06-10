@@ -15,6 +15,7 @@ class PacienteController extends Controller
     public function index()
     {
         //
+        return view('registro');
     }
 
     /**
@@ -25,7 +26,7 @@ class PacienteController extends Controller
     public function create(array $data)
     {
         //
-        return Paciente::create($data);
+        // return Paciente::create($data);
     }
 
     /**
@@ -38,7 +39,11 @@ class PacienteController extends Controller
     {
         $data = $request->all();
         Paciente::create($data);
-        return $data;
+        return redirect()->route('registro')->with('message', 'usuario agregado correctamente');
+        // return $data;
+
+
+        // return $data;
     }
 
     /**

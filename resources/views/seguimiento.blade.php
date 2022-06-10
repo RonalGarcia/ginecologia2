@@ -23,8 +23,8 @@
                 <div class="row">
                     <label for="colFormLabelLg" class="col-sm-2 col-form-label col-form-label-lg">Edad</label><br>
                     <div class="col-sm-10">
-                        <input type="text" name="edad" value="{{ $seguimiento[0]['edad'] }}"
-                            class="form-control form-control-lg" id="colFormLabelLg" placeholder="Inserte la edad aquí">
+                        <input type="text" name="edad" class="form-control form-control-lg" id="colFormLabelLg"
+                            placeholder="Inserte la edad aquí">
                     </div>
                 </div>
                 <br>

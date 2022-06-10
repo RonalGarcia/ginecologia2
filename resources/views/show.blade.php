@@ -49,117 +49,110 @@
                         <tr>
                             <th scope="row">Náusea - Vómito</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="nauseas" value="{{ $con->nauseas }}"
-                                            class="form-control">
+                                        <input type="text" name="nauseas" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Cefalea</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="cefalea" value="{{ $con->cefalea }}"
-                                            class="form-control">
+                                        <input type="text" name="cefalea" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Edema</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="edena" value="{{ $con->edena }}" class="form-control">
+                                        <input type="text" name="edena" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Movimientos Fetales</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="movimientosfetales"
-                                            value="{{ $con->movimientosfetales }}" class="form-control">
+                                        <input type="text" name="movimientosfetales" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Peso Corporal</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="pesocorporal" value="{{ $con->pesocorporal }}"
-                                            class="form-control">
+                                        <input type="text" name="pesocorporal" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Tensíon Arterial</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="tensionarterial" value="{{ $con->tensionarterial }}"
-                                            class="form-control">
+                                        <input type="text" name="tensionarterial" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Altura Uterina</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="alturauterina" value="{{ $con->alturauterina }}"
-                                            class="form-control">
+                                        <input type="text" name="alturauterina" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row"> Lat. Card. Fetal</th>
 
-                            @foreach ($consultas as $con)
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="latfetal" value="{{ $con->latfetal }}"
-                                            class="form-control">
+                                        <input type="text" name="latfetal" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                         <tr>
                             <th scope="row">Situación / Presentación</th>
-                            @foreach ($consultas as $con)
+
+                            @for ($i = 1; $i <= 9; $i++)
                                 <td>
                                     <div class="col-sm-12">
-                                        <input type="text" name="situacion" value="{{ $con->situacion }}"
-                                            class="form-control">
+                                        <input type="text" name="situacion" class="form-control">
                                     </div>
                                 </td>
-                            @endforeach
+                            @endfor
                         </tr>
                     </tbody>
                 </table>
                 <br>
-                {{-- <div class="form-group row">
+                <div class="form-group row">
                     <div class="col-sm-10">
                         <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
-                </div> --}}
+                </div>
             </form>
         </div>
     </div>

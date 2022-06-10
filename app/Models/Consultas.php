@@ -27,4 +27,9 @@ class Consultas extends Model
     {
         return $this->belongsTo(Paciente::class, 'id_paciente');
     }
+
+    public function ConsulPaciente()
+    {
+        return $this->belongsTo(Paciente::class, 'id');
+    }
 }

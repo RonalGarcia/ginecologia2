@@ -62,12 +62,12 @@
                                 Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file"></span>
                                 Orders
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
                             <a class="nav-link" href=<?= url('/registro') ?>>
@@ -93,16 +93,16 @@
                                 Seguimiento
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href=<?= url('/consulta') ?>>
-                                <span data-feather="bar-chart-2"></span>
-                                Consulta seguimiento
-                            </a>
-                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href={{ route('verconsultas') }}>
-                                <span data-feather="bar-chart-2"></span>
+                                <span data-feather="file"></span>
                                 Ver Consultas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href={{ route('consulta') }}>
+                                <span data-feather="file"></span>
+                                Consulta seguimiento
                             </a>
                         </li>
                         <li class="dropdown nav-item">
@@ -165,7 +165,7 @@
                 </div>
 
                 <div>
-
+                    @include('components.flash_alerts')
                     @yield('content')
 
 
@@ -178,6 +178,13 @@
     </div>
 
 
+    {{-- <script>
+        setTimeout(function() {
+            bootstrap.Alert.getOrCreateInstance(document.querySelector(".alert")).close();
+        }, 1000)
+    </script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -187,6 +194,12 @@
         integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous">
     </script>
     <script type="text/javascript" src="{{ asset('js/dashboard.js') }}"></script>
+
+    <script type="text/javascript">
+        $(".alert").delay(1000).slideUp(200, function() {
+            $(this).alert('close');
+        });
+    </script>
 </body>
 
 </html>

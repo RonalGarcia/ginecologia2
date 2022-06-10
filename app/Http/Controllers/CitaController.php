@@ -35,7 +35,6 @@ class CitaController extends Controller
     }
     public function crearCita()
     {
-        echo "el tio hentai,asdasdsadasd";
     }
     /**
      * Show the form for creating a new resource.
@@ -69,8 +68,12 @@ class CitaController extends Controller
         ]);
         //$data = $request->all();
         //Cita::create($data);
-        $data->save();
-        return $data;
+        if ($data->save()) {
+            // return $data;
+            return redirect()->route('agenda')->with('message', 'La cita se creó correctamente');
+        }
+        // $data->save();
+        // return $data;
     }
 
     /**

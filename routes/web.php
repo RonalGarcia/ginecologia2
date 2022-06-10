@@ -26,14 +26,14 @@ Route::get('/', function () {
 // Route::get('proyect', [pacientesController::class, 'index']);
 // Route::get('proyect', [pacientesController::class, 'servicios']);
 
-Route::get('/registro', function () {
-    return view('registro');
-});
+// Route::get('/registro', function () {
+//     return view('registro');
+// });
 
-Route::get('/consulta', function () {
+/* Route::get('/consulta', function () {
     return view('consulta');
 });
-
+ */
 // Route::get('/servicios', function () {
 //     return view('servicios');
 // });
@@ -45,6 +45,7 @@ Route::get('/consulta', function () {
 
 //pacientes
 Route::post('crearPaciente', [PacienteController::class, 'store'])->name('crearPaciente');
+Route::get('registro', [PacienteController::class, 'index'])->name('registro');
 //citas
 Route::get('citas', [CitaController::class, 'index'])->name('citas');
 Route::get('agenda', [CitaController::class, 'agenda'])->name('agenda');
@@ -52,7 +53,7 @@ Route::post('crearCita', [CitaController::class, 'store'])->name('crearCita');
 Route::get('cita-show', [CitaController::class, 'show'])->name('cita-show');
 Route::delete('cita/{cita}', [CitaController::class, 'destroy'])->name('cita.destroy');
 //API
-Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('getServicios');
+Route::get('getServicios', [ServicioController::class, 'getServicio'])->name('getServticios');
 //promociones
 Route::get('promociones', [PromocionesController::class, 'index'])->name('promociones');
 Route::get('crearPromo', [PromocionesController::class, 'store'])->name('crearPromo');
@@ -67,4 +68,8 @@ Route::delete('promociones/{promociones}', [PromocionesController::class, 'destr
 Route::get('seguimiento', [SeguimientoController::class, 'index'])->name('seguimiento');
 Route::post('crearSeguimiento', [SeguimientoController::class, 'store'])->name('crearSeguimiento');
 Route::post('crearConsulta', [ConsultasController::class, 'store'])->name('crearConsulta');
-Route::get('verconsultas', [ConsultasController::class, 'index'])->name('verconsultas');
+Route::get('verconsultas', [ConsultasController::class, 'verConsulta'])->name('verconsultas');
+// Route::get('verTabla', [ConsultasController::class, 'index'])->name('verTabla');
+Route::get('consulta', [ConsultasController::class, 'index'])->name('consulta');
+//
+Route::get('show/{id_paciente}', [ConsultasController::class, 'show'])->name('show');

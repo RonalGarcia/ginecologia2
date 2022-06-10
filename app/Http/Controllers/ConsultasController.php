@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Consultas;
+use App\Models\Paciente;
 use Illuminate\Http\Request;
 
 class ConsultasController extends Controller
@@ -17,12 +18,22 @@ class ConsultasController extends Controller
         //
         // $consultas = Consultas::all();
         // $seguimiento = Seguimiento::all();
+
+        $consul = Consultas::with('paciente')->get();
+        return view('consulta', [
+            'consultas' => $consul,
+
+        ]);
+        //return $id_paciente;
+    }
+
+    public function verConsulta()
+    {
         $consultas = Consultas::with('paciente')->get();
         return view('verconsultas', [
             'consultas' => $consultas,
 
         ]);
-        //return $consultas;
     }
 
 
@@ -60,9 +71,15 @@ class ConsultasController extends Controller
      * @param  \App\Models\Consultas  $consultas
      * @return \Illuminate\Http\Response
      */
-    public function show(Consultas $consultas)
+    public function show($id_paciente)
     {
         //
+        $consul = Consultas::with('ConsulPaciente')->where('id_paciente', $id_paciente)->get();
+        return view('consulta', [
+            'consultas' => $consul,
+
+        ]);
+        // return $consul;
     }
 
     /**
@@ -74,6 +91,7 @@ class ConsultasController extends Controller
     public function edit(Consultas $consultas)
     {
         //
+
     }
 
     /**

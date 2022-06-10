@@ -3,12 +3,12 @@
 @section('content')
     <div class="border-bottom" style="text-align: center">
         <!-- <ul class="menu">
-                                                                                            <a href="1" class="btn btn-outline-primary">Control Embarazo</a>
-                                                                                            <a href="2" class="btn btn-outline-primary">Obstetricia</a>
-                                                                                            <a href="3" class="btn btn-outline-primary">Ginecología</a>
-                                                                                            <a href="4" class="btn btn-outline-primary">Infertilidad y Esterilidad</a>
-                                                                                            <a href="5" class="btn btn-outline-primary">Psicologia y Sexología</a>
-                                                                                        </ul> -->
+                                                                                                                                                                                <a href="1" class="btn btn-outline-primary">Control Embarazo</a>
+                                                                                                                                                                                <a href="2" class="btn btn-outline-primary">Obstetricia</a>
+                                                                                                                                                                                <a href="3" class="btn btn-outline-primary">Ginecología</a>
+                                                                                                                                                                                <a href="4" class="btn btn-outline-primary">Infertilidad y Esterilidad</a>
+                                                                                                                                                                                <a href="5" class="btn btn-outline-primary">Psicologia y Sexología</a>
+                                                                                                                                                                            </ul> -->
     </div>
     <br>
     <h1>consultas</h1>
@@ -48,7 +48,12 @@
 
                     </div>
 
+                    <div class="row">
+                        <div class="col">
+                            <a href="{{ route('show', $consulta->id_paciente) }}" class="btn btn-primary">Enviar</a>
 
+                        </div>
+                    </div>
                 </div>
             @endforeach
         </div>

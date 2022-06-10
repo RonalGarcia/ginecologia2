@@ -15,4 +15,8 @@ class Paciente extends Model
         'email',
         'telefono',
     ];
+    public function paciente()
+    {
+        return $this->hasMany(Consultas::class, 'id_paciente');
+    }
 }
